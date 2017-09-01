@@ -1558,7 +1558,7 @@ static NSTimeInterval getAnimationDuration(NSNumber * durationMillSeconds){
     [self callbackWithKeyPath:F_CB_WINDOW_ACTION_SHEET intData:buttonIndex];
     [self.actionSheetCB executeWithArguments:ACArgsPack(@(buttonIndex))];
     self.actionSheetCB = nil;
-    
+    self.mActionSheet = nil;
 }
 
 

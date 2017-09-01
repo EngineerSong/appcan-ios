@@ -233,6 +233,12 @@
     return [ACEViewControllerAnimator closingAnimatorWithAnimationID:widget.closeAnimation duration:widget.closeAnimationDuration config:widget.closeAnimationConfig];
 }
 
-                    
+- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion
+{
+    if (self.presentedViewController != nil) {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
+}
+
                     
 @end

@@ -267,12 +267,34 @@ static NSInvocation* _swizzleMethodWithBlock(Class target,SEL origin,id block){
     return (id<AppCanEngineConfiguration>)_configProxy;
 }
 
-#pragma mark - UIAlertViewDelgate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-    [BUtility exitWithClearData];
+#pragma mark - 获取当前屏幕显示的viewcontroller，UIAlertController要用到
++ (UIViewController *)getCurrentVC
+{
+    UIViewController *result = nil;
     
+    if ([UIApplication sharedApplication].delegate.window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
+        {
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                [UIApplication sharedApplication].delegate.window = tmpWin;
+                break;
+            }
+        }
+    }
     
+    UIView *frontView = [[[UIApplication sharedApplication].delegate.window subviews] lastObject];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]]){
+        result = nextResponder;
+    }
+    //    else{
+    //        result = self.window.rootViewController;
+    //    }
+    return result;
 }
 
 #pragma mark - Application Delegate Event
@@ -282,13 +304,18 @@ static NSInvocation* _swizzleMethodWithBlock(Class target,SEL origin,id block){
     [ACEDes enable];
     
     if (self.configuration.useCloseAppWithJaibroken && [BUtility isJailbroken]) {
-        UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:ACELocalized(@"提示") message:ACELocalized(@"本应用仅适用未越狱机，即将关闭。") delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alertView show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:ACELocalized(@"提示") message:ACELocalized(@"本应用仅适用未越狱机，即将关闭。") preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+            [BUtility exitWithClearData];
+        }]];
+        
+        [[AppCanEngine getCurrentVC] presentViewController:alertController animated:YES completion:nil];
+        
         return NO;
     }
     
-
-   
     if(self.configuration.usePushControl) {
         UIUserNotificationSettings *uns = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:nil];
         //注册推送

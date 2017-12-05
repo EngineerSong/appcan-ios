@@ -248,6 +248,11 @@ static BOOL userCustomLoadingImageEnabled = NO;
     }
     if (customImage) {
         self.mStartView = [[UIImageView alloc] initWithImage:customImage];
+        //JAYTAG
+        //if (iPhoneX) {
+        self.mStartView.clipsToBounds = YES;
+        self.mStartView.contentMode =  UIViewContentModeScaleAspectFill;
+        //}
     }
     
     if (!self.mStartView) {
@@ -276,6 +281,10 @@ static BOOL userCustomLoadingImageEnabled = NO;
             } else {
                 launchImageName = [NSString stringWithFormat:@"%@", launchImagePrefixFile];
             }
+            
+            //JAYTAG
+            //在上面要加上iPhone X的图片的名字
+            
             launchImage = [UIImage imageNamed:launchImageName];
             self.mStartView = [[UIImageView alloc] initWithImage:launchImage];
         }

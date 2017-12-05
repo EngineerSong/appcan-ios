@@ -227,7 +227,9 @@
     [ACEAnalysisObject() ac_invoke:@"setErrorReport:" arguments:ACArgsPack(@(YES))];
     
     
-
+//    if(@available(iOS 11.0, *)){
+//        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+//    }
 
     self.mwWgtMgr = [WWidgetMgr sharedManager];
     //[self readAppCanJS];
@@ -277,6 +279,8 @@
     
     NSString * devStr = [deviceToken description];
     NSString * firstStr = [devStr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    
+    NSLog(@"AppCan测试日志-->推送deviceToken-->firstStr=%@",firstStr);
     
     if (firstStr) {
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];

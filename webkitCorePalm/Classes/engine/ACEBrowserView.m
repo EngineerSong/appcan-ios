@@ -543,6 +543,7 @@ const CGFloat loadingVisibleHeight = 60.0f;
 }
 
 - (void)loadUEXScript {
+    NSLog(@"loadUEXScript: %@",self.currentUrl);
     [self initializeJSCHandler];
     
 }
@@ -557,6 +558,11 @@ const CGFloat loadingVisibleHeight = 60.0f;
     self.indicatorView = indicator;
     [self addSubview:self.indicatorView];
     
+    //JAYTAG --> xcode8编译会失败，所以注掉了
+//    if(@available(iOS 11.0, *)){
+//        [self.scrollView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+//    }
+        
     self.scrollView.decelerationRate = 1.0;
     self.muexObjName = inUExObjName;
     mPageInfoDict = [[NSMutableDictionary alloc]initWithCapacity:F_PAGEINFO_DICT_SIZE];

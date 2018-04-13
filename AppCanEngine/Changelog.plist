@@ -5,6 +5,7 @@
 	<key>4.1.16</key>
 	<array>
 		<string>深航引擎，移除反动态调试处理</string>
+		<string>深航引擎，添加系统库CoreFoundation</string>
 	</array>
 	<key>4.1.15</key>
 	<array>

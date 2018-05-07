@@ -35,7 +35,7 @@
 		42D96D571DAB92B9001ABB17 /* AppCanKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42D96D551DAB92B4001ABB17 /* AppCanKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42F6E8E41C5749E70073C6E0 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F6E8E31C5749E70073C6E0 /* JavaScriptCore.framework */; };
 		42FFC8021B625EC60058E363 /* PackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FFC8011B625EC60058E363 /* PackageInfo.m */; };
-		696128512080BC2D00CCE18C /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696128502080BC2D00CCE18C /* CoreFoundation.framework */; };
+		694F71E6209BFD9600595909 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696128502080BC2D00CCE18C /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6CC6033A157DCC0F00A3E13E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC60339157DCC0F00A3E13E /* CoreGraphics.framework */; };
 		6CC60340157DCC0F00A3E13E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CC6033E157DCC0F00A3E13E /* InfoPlist.strings */; };
 		6CC60342157DCC0F00A3E13E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC60341157DCC0F00A3E13E /* main.m */; };
@@ -167,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				696128512080BC2D00CCE18C /* CoreFoundation.framework in Frameworks */,
+				694F71E6209BFD9600595909 /* CoreFoundation.framework in Frameworks */,
 				42D96D4B1DAB7B69001ABB17 /* VideoToolbox.framework in Frameworks */,
 				6CC60376157DCCEF00A3E13E /* AudioToolbox.framework in Frameworks */,
 				42F6E8E41C5749E70073C6E0 /* JavaScriptCore.framework in Frameworks */,

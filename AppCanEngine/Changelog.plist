@@ -7,6 +7,7 @@
 		<string>深航引擎，移除反动态调试处理</string>
 		<string>深航引擎，添加系统库CoreFoundation</string>
 		<string>深航引擎，使用xcode8添加系统库CoreFoundation，并设为Optional</string>
+		<string>深航引擎，增加uexWindow.removeLocalData方法</string>
 	</array>
 	<key>4.1.15</key>
 	<array>
